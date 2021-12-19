@@ -1,0 +1,31 @@
+<div class="container">
+  <button mat-icon-button class="close" [autofocus]="false" (click)="dialogRef.close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <div class="image">
+    <img
+      #photo
+      (error)="photo.src = 'assets/nophoto.png'"
+      [src]="data.image_url"
+      alt="Photo"
+      width="150px"
+      height="150px"
+    />
+  </div>
+  <div class="info">
+    <div class="info__item">
+      <span>Name:</span>
+      <span>{{ data.name }}</span>
+    </div>
+
+    <div class="info__item">
+      <span>Last Name:</span>
+      <span>{{ data.last_name }}</span>
+    </div>
+
+    <div class="info__item">
+      <span>Age:</span>
+      <span>{{ data.age }}</span>
+    </div>
+  </div>
+</div>

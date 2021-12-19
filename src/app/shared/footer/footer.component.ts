@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { UiQuery } from '@core/states/ui/ui.query';
 
 @Component({
@@ -7,8 +7,6 @@ import { UiQuery } from '@core/states/ui/ui.query';
   styleUrls: ['./footer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
   constructor(public uiQuery: UiQuery) {}
-
-  ngOnInit(): void {}
 }

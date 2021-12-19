@@ -3,6 +3,8 @@ import { IUser } from '@core/interfaces/user.interface';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { delay, map, merge, Observable, of, Subject, Subscription, switchMap, takeUntil, tap, timer } from 'rxjs';
 import { UserService } from '@core/api-services/user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DetailsComponent } from '@pages/home/modals/details/details.component';
 
 @Component({
   selector: 'app-home',
@@ -20,12 +22,30 @@ export class HomeComponent implements OnInit, OnDestroy {
   repeatEvent = new Subject<number>();
   stopRepeatEvent = new Subject<boolean>();
 
-  constructor(private fb: FormBuilder, private userService: UserService, private cdr: ChangeDetectorRef) {
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private cdr: ChangeDetectorRef,
+    private dialog: MatDialog,
+  ) {
     this.sliderControl = this.fb.control(0);
   }
 
   ngOnInit(): void {
     this.subs.push(this.initTableData().subscribe(() => {}));
+  }
+
+  openDetails(item: IUser): void {
+    this.stopRepeatEvent.next(true);
+
+    const dialogRef = this.dialog.open(DetailsComponent, {
+      width: '350px',
+      data: item,
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.repeatEvent.next(this.sliderControl.value);
+    });
   }
 
   initTableData(): Observable<IUser[]> {

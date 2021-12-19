@@ -1,0 +1,45 @@
+:host {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: -15px;
+  top: -15px;
+  opacity: 0.6;
+  ::ng-deep .mat-button-focus-overlay {
+    background-color: transparent !important;
+  }
+}
+
+.info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  &__item {
+    display: flex;
+    flex-direction: column;
+    span:first-child {
+      font-weight: 700;
+    }
+  }
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  img {
+    border-radius: 50%;
+  }
+}

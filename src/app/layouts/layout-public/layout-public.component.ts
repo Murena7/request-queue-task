@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-layout-public',
@@ -6,11 +6,6 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
   styleUrls: ['./layout-public.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LayoutPublicComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class LayoutPublicComponent {
+  constructor() {}
 }
