@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           switchMap(value => {
             this.stopRepeatEvent.next(true);
             this.sliderControl.disable({ emitEvent: false });
+
             this.tableData = [];
 
             if (value === 0) {
@@ -59,6 +60,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         )
         .subscribe(x => {
           this.sliderControl.enable({ emitEvent: false });
+          this.sliderControl.patchValue(this.sliderControl.value, { emitEvent: false });
         }),
     );
   }

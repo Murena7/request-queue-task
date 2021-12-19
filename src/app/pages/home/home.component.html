@@ -13,17 +13,17 @@
   </div>
   <table class="user-table" mat-table [dataSource]="tableData">
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <th mat-header-cell *matHeaderCellDef [width]="'40%'">Name</th>
       <td mat-cell *matCellDef="let element">{{ element.name }}</td>
     </ng-container>
 
     <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef>Last Name</th>
+      <th mat-header-cell *matHeaderCellDef [width]="'40%'">Last Name</th>
       <td mat-cell *matCellDef="let element">{{ element.last_name }}</td>
     </ng-container>
 
     <ng-container matColumnDef="age">
-      <th mat-header-cell *matHeaderCellDef>Age</th>
+      <th mat-header-cell *matHeaderCellDef [width]="'20%'">Age</th>
       <td mat-cell *matCellDef="let element">{{ element.age }}</td>
     </ng-container>
 

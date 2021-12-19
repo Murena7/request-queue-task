@@ -20,6 +20,7 @@ import {
 } from 'rxjs';
 import { IUser, User } from '../interfaces/user.interface';
 import { environment } from '@environment';
+import { UiService } from '@core/states/ui/ui.service';
 
 const API_URL = environment.apiUrl;
 const REQUESTS_PER_SECOND = 4;
@@ -28,15 +29,17 @@ const REQUESTS_PER_SECOND = 4;
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private uiService: UiService) {}
 
   public getUsers(count: number): Observable<IUser[]> {
+    this.uiService.isLoading(true);
     return range(0, count).pipe(
       bufferCount(REQUESTS_PER_SECOND),
       concatMap(valuesArray => {
         return concat<any>(from(valuesArray).pipe(mergeMap(() => this.getUserRequest())), timer(1000).pipe(skip(1)));
       }),
       bufferCount(count),
+      tap(() => this.uiService.isLoading(false)),
     );
   }
 
